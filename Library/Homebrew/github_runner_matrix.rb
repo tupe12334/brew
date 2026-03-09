@@ -90,7 +90,7 @@ class GitHubRunnerMatrix
   sig { params(arch: Symbol).returns(LinuxRunnerSpec) }
   def linux_runner_spec(arch)
     linux_runner = case arch
-    when :arm64 then "ubuntu-22.04-arm"
+    when :arm64 then "ubuntu-24.04-arm"
     when :x86_64 then ENV.fetch("HOMEBREW_LINUX_RUNNER", "ubuntu-latest")
     else raise "Unknown Linux architecture: #{arch}"
     end
@@ -99,7 +99,7 @@ class GitHubRunnerMatrix
       name:      "Linux #{arch}",
       runner:    linux_runner,
       container: {
-        image:   "ghcr.io/homebrew/ubuntu22.04:main",
+        image:   "ghcr.io/homebrew/ubuntu24.04:main",
         options: "--user=linuxbrew -e GITHUB_ACTIONS_HOMEBREW_SELF_HOSTED",
       },
       workdir:   "/github/home",

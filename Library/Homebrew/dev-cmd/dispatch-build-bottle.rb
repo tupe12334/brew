@@ -68,12 +68,12 @@ module Homebrew
         end
 
         if args.linux?
-          runners << "ubuntu-22.04"
+          runners << "ubuntu-24.04"
         elsif args.linux_self_hosted?
           runners << "linux-self-hosted-1"
         end
 
-        runners << "ubuntu-22.04-arm" if args.linux_arm64?
+        runners << "ubuntu-24.04-arm" if args.linux_arm64?
 
         if runners.empty?
           raise UsageError, "Must specify `--macos`, `--linux`, `--linux-arm64`, or `--linux-self-hosted` option."
